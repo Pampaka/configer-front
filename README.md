@@ -1,6 +1,6 @@
 # Configer (frontend)
 
-**(Project of my acquaintance with React with TypeScript)**
+**(Project of my acquaintance with React with TypeScript and SCSS)**
 
 ---
 
