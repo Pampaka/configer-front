@@ -1,13 +1,8 @@
 @import 'src/styles/root';
 
-$height: 55px;
-
 .container {
-    display: flex;
-    align-items: center;
-    padding: 0 10px;
+    padding: 10px;
     background-color: $main-color;
-    height: $height;
     color: $text-light;
     font-weight: bold;
     font-size: $text-title;

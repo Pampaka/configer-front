@@ -1,7 +1,13 @@
+import { AppBar } from '@mui/material'
+
 import style from './Header.module.scss'
 
 const Header = () => {
-	return <div className={style.container}>Configer</div>
+	return (
+		<AppBar className={style.container} position={'static'}>
+			Configer
+		</AppBar>
+	)
 }
 
 export default Header
