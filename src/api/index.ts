@@ -13,7 +13,7 @@ const $authHost = axios.create({
 })
 
 $authHost.interceptors.request.use(config => {
-	config.headers.authorization = `Bearer ${localStorage.getItem('token')}`
+	config.headers.authorization = `Bearer ${sessionStorage.getItem('token')}`
 	return config
 })
 

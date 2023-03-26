@@ -21,7 +21,7 @@ const useSignIn = () => {
 		error.setError(null)
 		signIn({ login: login.value, password: password.value })
 			.then(({ token }) => {
-				localStorage.setItem('token', token)
+				sessionStorage.setItem('token', token)
 				navigate(CONFIGS_PATH)
 			})
 			.catch(error.setError)
