@@ -13,4 +13,5 @@ ENV for start:
 
 ```
 PORT=3000
+REACT_APP_API_URL=http://localhost:5000 - backend url
 ```
