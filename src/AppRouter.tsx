@@ -5,7 +5,7 @@ import { createRoutesFromElements, Navigate, Route, RouterProvider } from 'react
 import Layout from './components/Layout/Layout'
 import PageLoader from './components/PageLoader/PageLoader'
 
-import { LOGIN_PATH } from './utils/paths'
+import { SIGN_IN_PATH } from './utils/paths'
 import routes from './routes'
 
 const router = createBrowserRouter(
@@ -15,7 +15,7 @@ const router = createBrowserRouter(
 				<Route key={path} path={path} element={<Element />} />
 			))}
 
-			<Route path={'*'} element={<Navigate to={LOGIN_PATH} replace />} />
+			<Route path={'*'} element={<Navigate to={SIGN_IN_PATH} replace />} />
 		</Route>
 	)
 )
