@@ -1,21 +1,12 @@
 import { useTranslation } from 'react-i18next'
-import { useEffect, useState } from 'react'
-import { Alert, Button, CircularProgress, Paper, Snackbar, TextField } from '@mui/material'
-
+import { Button, CircularProgress, Paper, TextField } from '@mui/material'
+import { SnackError } from '../ui'
 import useSignIn from '../../hooks/useSignIn'
-
 import style from './SignInForm.module.scss'
 
 const SignInForm = () => {
 	const { t } = useTranslation(['signIn'])
 	const { data, submit, loading, error } = useSignIn()
-
-	const [showError, setShowError] = useState(false)
-	const hideError = () => setShowError(false)
-
-	useEffect(() => {
-		if (!!error) setShowError(true)
-	}, [error])
 
 	return (
 		<Paper className={style.container} elevation={6}>
@@ -33,11 +24,7 @@ const SignInForm = () => {
 				{loading ? <CircularProgress size={24} color={'inherit'} /> : t('signIn')}
 			</Button>
 
-			<Snackbar open={showError} autoHideDuration={5000} onClose={hideError}>
-				<Alert severity={'error'} sx={{ width: '100%' }} onClose={hideError}>
-					{error}
-				</Alert>
-			</Snackbar>
+			<SnackError error={error} />
 		</Paper>
 	)
 }

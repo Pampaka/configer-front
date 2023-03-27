@@ -1,10 +1,16 @@
-import React from 'react'
 import { useTranslation } from 'react-i18next'
+import ConfigsTable from '../../components/Configs/ConfigsTable/ConfigsTable'
+import style from './ConfigsPage.module.scss'
 
 const ConfigsPage = () => {
 	const { t } = useTranslation(['configs'])
 
-	return <div>{t('configs:configs')}</div>
+	return (
+		<div>
+			<h1 className={style.title}>{t('configs:configs')}</h1>
+			<ConfigsTable />
+		</div>
+	)
 }
 
 export default ConfigsPage
