@@ -1,16 +1,17 @@
 import { useEffect, useState } from 'react'
-import { getAllConfigs } from '../api/configs'
-import type { ConfigData } from '../types/config'
 import useApiError from './useApiError'
 
-const useConfigs = () => {
+const useFetch = <T>(
+	initialData: T,
+	getFunction: () => Promise<T>
+): { data: T; loading: boolean; error: string | null } => {
 	const error = useApiError()
-	const [data, setData] = useState<Array<ConfigData>>([])
+	const [data, setData] = useState<T>(initialData)
 	const [loading, setLoading] = useState(false)
 
 	useEffect(() => {
 		setLoading(true)
-		getAllConfigs()
+		getFunction()
 			.then(res => setData(res))
 			.catch(e => error.setError(e))
 			.finally(() => setLoading(false))
@@ -19,4 +20,4 @@ const useConfigs = () => {
 	return { data, loading, error: error.message }
 }
 
-export default useConfigs
+export default useFetch

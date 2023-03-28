@@ -1,9 +1,7 @@
 import { $authHost } from './index'
 import type { ConfigData } from '../types/config'
 
-interface ConfigsResponse extends Array<ConfigData> {}
-
-export const getAllConfigs = async (): Promise<ConfigsResponse> => {
+export const getAllConfigs = async (): Promise<ConfigData[]> => {
 	const { data } = await $authHost.get('/api/configs/all')
 	return data
 }

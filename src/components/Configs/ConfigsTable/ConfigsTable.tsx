@@ -1,35 +1,50 @@
-import type { GridColDef, GridValueGetterParams } from '@mui/x-data-grid'
 import { useTranslation } from 'react-i18next'
-import { useMemo } from 'react'
-import { DataGrid } from '@mui/x-data-grid'
-import { SnackError } from '../../ui'
-import useConfigs from '../../../hooks/useConfigs'
+import { IconButton, Table, TableBody, TableCell, TableHead, TableRow } from '@mui/material'
+import EditIcon from '@mui/icons-material/Edit'
+import DeleteIcon from '@mui/icons-material/Delete'
 
-const ConfigsTable = () => {
+import type { ConfigData } from '../../../types/config'
+import type { FC } from 'react'
+
+interface ConfigsTableProps {
+	data: ConfigData[]
+}
+
+const ConfigsTable: FC<ConfigsTableProps> = ({ data }) => {
 	const { t } = useTranslation(['configs'])
-	const { data, loading, error } = useConfigs()
-
-	const columns = useMemo(
-		(): GridColDef[] => [
-			{ field: 'id', headerName: 'ID', width: 150 },
-			{ field: 'name', headerName: t('configs:name') || 'name', width: 250 },
-			{ field: 'env', headerName: t('configs:env') || 'env', width: 250 },
-			{
-				field: 'updatedAt',
-				headerName: t('configs:updatedAt') || 'updatedAt',
-				width: 250,
-				valueGetter: (params: GridValueGetterParams) => {
-					return new Date(params.row.updatedAt).toString()
-				}
-			}
-		],
-		[t]
-	)
 
 	return (
 		<div style={{ height: 700, width: '100%' }}>
-			<DataGrid columns={columns} rows={data} />
-			<SnackError error={error} />
+			<Table size={'small'}>
+				<TableHead>
+					<TableRow>
+						<TableCell>{t('configs:name')}</TableCell>
+						<TableCell>{t('configs:env')}</TableCell>
+						<TableCell>{t('configs:updatedAt')}</TableCell>
+						<TableCell>{t('configs:edit')}</TableCell>
+						<TableCell>{t('configs:remove')}</TableCell>
+					</TableRow>
+				</TableHead>
+				<TableBody>
+					{data.map(item => (
+						<TableRow>
+							<TableCell>{item.name}</TableCell>
+							<TableCell>{item.env}</TableCell>
+							<TableCell>{item.updatedAt}</TableCell>
+							<TableCell>
+								<IconButton>
+									<EditIcon />
+								</IconButton>
+							</TableCell>
+							<TableCell>
+								<IconButton>
+									<DeleteIcon />
+								</IconButton>
+							</TableCell>
+						</TableRow>
+					))}
+				</TableBody>
+			</Table>
 		</div>
 	)
 }

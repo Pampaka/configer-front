@@ -2,5 +2,7 @@
   "configs": "Configurations",
   "name": "Service name",
   "env": "Environment",
-  "updatedAt": "Updated at"
+  "updatedAt": "Updated at",
+  "edit": "Edit",
+  "remove": "Remove"
 }
