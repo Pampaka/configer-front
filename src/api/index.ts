@@ -1,6 +1,7 @@
 import axios from 'axios'
 
 import { API_URL } from '../utils/urls'
+import { SIGN_IN_PATH } from '../utils/paths'
 
 const $host = axios.create({
 	baseURL: API_URL,
@@ -16,5 +17,14 @@ $authHost.interceptors.request.use(config => {
 	config.headers.authorization = `Bearer ${sessionStorage.getItem('token')}`
 	return config
 })
+
+$authHost.interceptors.response.use(
+	res => res,
+	error => {
+		if (error?.response?.status === 401) {
+			window.location.href = SIGN_IN_PATH
+		}
+	}
+)
 
 export { $host, $authHost }
