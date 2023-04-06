@@ -27,7 +27,7 @@ const ConfigsTable: FC<ConfigsTableProps> = ({ data }) => {
 				</TableHead>
 				<TableBody>
 					{data.map(item => (
-						<TableRow>
+						<TableRow key={item.id}>
 							<TableCell>{item.name}</TableCell>
 							<TableCell>{item.env}</TableCell>
 							<TableCell>{item.updatedAt}</TableCell>
