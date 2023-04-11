@@ -23,6 +23,8 @@ $authHost.interceptors.response.use(
 	error => {
 		if (error?.response?.status === 401) {
 			window.location.href = SIGN_IN_PATH
+		} else {
+			throw error
 		}
 	}
 )
