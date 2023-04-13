@@ -36,12 +36,12 @@ const ConfigsTable: FC<ConfigsTableProps> = ({ data, onEdit, onRemove }) => {
 							<TableCell>{dateFormat(item.updatedAt)}</TableCell>
 							<TableCell>
 								<IconButton onClick={() => onEdit(item)}>
-									<EditIcon />
+									<EditIcon color={'primary'} />
 								</IconButton>
 							</TableCell>
 							<TableCell>
 								<IconButton onClick={() => onRemove(item.id)}>
-									<DeleteIcon />
+									<DeleteIcon color={'error'} />
 								</IconButton>
 							</TableCell>
 						</TableRow>
