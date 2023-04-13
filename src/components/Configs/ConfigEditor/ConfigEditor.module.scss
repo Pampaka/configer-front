@@ -1,0 +1,29 @@
+@import "/src/styles/root";
+
+.container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    display: flex;
+    flex-direction: column;
+    width: 500px;
+    grid-row-gap: 12px;
+    padding: 16px;
+    transform: translate(-50%, -50%);
+}
+
+.configData {
+    display: flex;
+    grid-column-gap: 8px;
+    align-items: center;
+}
+
+.addConfig {
+    width: fit-content;
+}
+
+.save {
+    margin-top: 24px;
+    width: fit-content;
+    align-self: center;
+}

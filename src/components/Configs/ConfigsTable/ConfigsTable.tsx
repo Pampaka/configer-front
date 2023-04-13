@@ -1,16 +1,19 @@
+import type { ConfigData } from '../../../types/config'
+import type { FC } from 'react'
+
 import { useTranslation } from 'react-i18next'
 import { IconButton, Table, TableBody, TableCell, TableHead, TableRow } from '@mui/material'
 import EditIcon from '@mui/icons-material/Edit'
 import DeleteIcon from '@mui/icons-material/Delete'
-
-import type { ConfigData } from '../../../types/config'
-import type { FC } from 'react'
+import dateFormat from '../../../utils/dateFormat'
 
 interface ConfigsTableProps {
 	data: ConfigData[]
+	onEdit: (item: ConfigData) => void
+	onRemove: (id: string) => void
 }
 
-const ConfigsTable: FC<ConfigsTableProps> = ({ data }) => {
+const ConfigsTable: FC<ConfigsTableProps> = ({ data, onEdit, onRemove }) => {
 	const { t } = useTranslation(['configs'])
 
 	return (
@@ -30,14 +33,14 @@ const ConfigsTable: FC<ConfigsTableProps> = ({ data }) => {
 						<TableRow key={item.id}>
 							<TableCell>{item.name}</TableCell>
 							<TableCell>{item.env}</TableCell>
-							<TableCell>{item.updatedAt}</TableCell>
+							<TableCell>{dateFormat(item.updatedAt)}</TableCell>
 							<TableCell>
-								<IconButton>
+								<IconButton onClick={() => onEdit(item)}>
 									<EditIcon />
 								</IconButton>
 							</TableCell>
 							<TableCell>
-								<IconButton>
+								<IconButton onClick={() => onRemove(item.id)}>
 									<DeleteIcon />
 								</IconButton>
 							</TableCell>

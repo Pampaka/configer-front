@@ -1,8 +1,12 @@
+export interface JsonConfig {
+	[key: string]: string
+}
+
 export interface ConfigData {
 	id: string
 	name: string
 	env: string
-	data?: object | null
+	data?: JsonConfig | null
 	createdAt: string
 	updatedAt: string
 }

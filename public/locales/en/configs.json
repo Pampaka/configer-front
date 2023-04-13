@@ -2,7 +2,13 @@
   "configs": "Configurations",
   "name": "Service name",
   "env": "Environment",
+  "data": "Configuration object",
   "updatedAt": "Updated at",
+  "key": "Key",
+  "value": "Value",
+  "add": "Add",
   "edit": "Edit",
-  "remove": "Remove"
+  "create": "Create",
+  "remove": "Remove",
+  "save": "Save"
 }
